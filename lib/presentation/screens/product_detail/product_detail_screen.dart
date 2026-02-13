@@ -6,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/utils/helpers.dart';
@@ -26,6 +27,7 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   int _currentImageIndex = 0;
   String? _selectedSize;
+  bool _addedToBag = false;
 
   Product? _product;
 
@@ -59,9 +61,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.share_outlined, size: 22),
-            onPressed: () {
-              Helpers.showSnackBar(context, 'Share functionality coming soon');
-            },
+            onPressed: () => _shareProduct(product),
           ),
         ],
       ),
@@ -752,6 +752,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           child: ElevatedButton(
             onPressed: !product.isAvailable
                 ? null
+                : _addedToBag
+                ? () => context.push('/cart')
                 : _selectedSize == null
                 ? () => Helpers.showSnackBar(
                     context,
@@ -763,6 +765,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       product,
                       _selectedSize!,
                     );
+                    setState(() => _addedToBag = true);
                     Helpers.showSnackBar(context, 'Added to bag');
                   },
             style: ElevatedButton.styleFrom(
@@ -773,7 +776,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               elevation: 0,
             ),
             child: Text(
-              !product.isAvailable ? 'SOLD OUT' : 'ADD TO BAG',
+              !product.isAvailable ? 'SOLD OUT' : _addedToBag ? 'GO TO BAG' : 'ADD TO BAG',
               style: GoogleFonts.inter(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
@@ -785,6 +788,34 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         ),
       ),
     );
+  }
+
+  void _shareProduct(Product product) async {
+    final String shareText = '''
+Check out this ${product.brand} sneaker on VegNonVeg!
+
+${product.name}
+${Formatters.currency(product.effectivePrice)}
+
+${product.description}
+
+#VegNonVeg #Sneakers #${product.brand}
+'''.trim();
+
+    try {
+      await Share.share(
+        shareText,
+        subject: product.name,
+      );
+    } catch (e) {
+      if (mounted) {
+        Helpers.showSnackBar(
+          context,
+          'Unable to share at the moment',
+          isError: true,
+        );
+      }
+    }
   }
 
   void _showSizeGuide() {

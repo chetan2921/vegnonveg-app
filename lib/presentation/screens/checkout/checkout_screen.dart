@@ -40,6 +40,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Image.asset('assets/images/vnv-white-bg-logo.png', height: 55),
         leading: IconButton(
@@ -118,6 +119,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       key: _formKey,
       child: Column(
         children: [
+          const SizedBox(height: 8),
           TextFormField(
             controller: _nameController,
             decoration: const InputDecoration(labelText: 'Full Name'),

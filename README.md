@@ -8,6 +8,17 @@ A premium, high-fidelity Flutter clone of the VegNonVeg sneaker store applicatio
 ## ✨ Features
 
 - **Google Sheets CMS**: Dynamic product inventory managed entirely via Google Sheets API. App syncs titles, prices, images, and brand data in real-time.
+- **🔔 Push Notifications** (NEW):
+  - Restock alerts for wishlisted items
+  - Price drop notifications
+  - New sneaker drop alerts from favorite brands
+  - Order status updates
+  - Flash sale notifications
+  - Personalized recommendations
+- **📸 Image Search** (NEW):
+  - Search products by uploading photos
+  - Capture and search with camera
+  - Find similar products instantly
 - **Premium UI/UX**:
   - Custom "Shop the Look" horizontal card-fan animation (physics-based scroll effects).
   - Smooth transitions and hero animations for product details.
@@ -25,7 +36,9 @@ A premium, high-fidelity Flutter clone of the VegNonVeg sneaker store applicatio
 
 - **Framework**: [Flutter](https://flutter.dev/)
 - **State Management**: [Provider](https://pub.dev/packages/provider)
+- **Backend**: [Firebase](https://firebase.google.com/) (Cloud Messaging for push notifications)
 - **Networking**: [Dio](https://pub.dev/packages/dio) & [Google APIs](https://pub.dev/packages/googleapis)
+- **Image Processing**: [image_picker](https://pub.dev/packages/image_picker)
 - **UI Components**:
   - `google_fonts` for typography.
   - `cached_network_image` for optimized image loading.
@@ -54,10 +67,22 @@ A premium, high-fidelity Flutter clone of the VegNonVeg sneaker store applicatio
    flutter pub get
    ```
 
-3. **Run the app**
+3. **Configure Firebase** (Required for push notifications)
+
+   ```bash
+   # Install FlutterFire CLI
+   dart pub global activate flutterfire_cli
+   
+   # Configure Firebase
+   flutterfire configure
+   ```
+
+4. **Run the app**
    ```bash
    flutter run
    ```
+
+> 📖 **For detailed setup of new features (Push Notifications & Image Search), see [NEW_FEATURES_SETUP.md](NEW_FEATURES_SETUP.md)**
 
 ## 📱 Screenshots
 

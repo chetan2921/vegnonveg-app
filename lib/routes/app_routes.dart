@@ -13,6 +13,8 @@ import '../presentation/screens/profile/profile_screen.dart';
 import '../presentation/screens/orders/orders_screen.dart';
 import '../presentation/screens/wishlist/wishlist_screen.dart';
 import '../presentation/screens/search/search_screen.dart';
+import '../presentation/screens/search/image_search_screen.dart';
+import '../presentation/screens/settings/notification_settings_screen.dart';
 import '../presentation/screens/main_shell.dart';
 
 class AppRouter {
@@ -82,6 +84,14 @@ class AppRouter {
       GoRoute(
         path: '/orders',
         builder: (context, state) => const OrdersScreen(),
+      ),
+      GoRoute(
+        path: '/image-search',
+        builder: (context, state) => const ImageSearchScreen(),
+      ),
+      GoRoute(
+        path: '/notification-settings',
+        builder: (context, state) => const NotificationSettingsScreen(),
       ),
     ],
   );

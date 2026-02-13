@@ -78,7 +78,7 @@ class _SearchScreenState extends State<SearchScreen> {
         children: [
           // Search field
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
             child: Container(
               height: 44,
               decoration: BoxDecoration(
@@ -117,6 +117,39 @@ class _SearchScreenState extends State<SearchScreen> {
                   contentPadding: const EdgeInsets.symmetric(vertical: 12),
                 ),
                 style: const TextStyle(fontSize: 14),
+              ),
+            ),
+          ),
+          // Image Search Button
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: GestureDetector(
+              onTap: () => context.push('/image-search'),
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.primaryBlack),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.camera_alt_outlined,
+                      size: 18,
+                      color: AppColors.primaryBlack,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Search by Image',
+                      style: GoogleFonts.inter(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryBlack,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

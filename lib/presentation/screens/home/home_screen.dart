@@ -99,9 +99,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 10),
               _buildShopAllButton('SHOP ALL APPAREL'),
               const SizedBox(height: 40),
-              const SectionTitle(title: 'Shop The Look'),
-              _buildShopTheLook(),
-              const SizedBox(height: 40),
+              // const SectionTitle(title: 'Shop The Look'),
+              // _buildShopTheLook(),
+              // const SizedBox(height: 40),
               const SectionTitle(title: 'OUR COMMUNITY + CULTURE + EVENTS'),
               _buildCommunitySection(),
               const SizedBox(height: 32),
@@ -944,7 +944,7 @@ class _HomeScreenState extends State<HomeScreen> {
             'assets/images/promo_banner.webp',
             width: double.infinity,
             height: 400,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ),
           // Gradient overlay
           // Container(

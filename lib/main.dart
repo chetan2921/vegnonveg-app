@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'core/theme/app_theme.dart';
+import 'core/services/notification_service.dart';
+import 'core/services/storage_service.dart';
 import 'data/providers/product_provider.dart';
 import 'data/providers/auth_provider.dart';
 import 'data/providers/cart_provider.dart';
 import 'data/providers/wishlist_provider.dart';
 import 'routes/app_routes.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // Initialize storage service
+  await StorageService().init();
+
+  // Initialize notification service
+  await NotificationService().init();
 
   // Set preferred orientations and status bar style
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

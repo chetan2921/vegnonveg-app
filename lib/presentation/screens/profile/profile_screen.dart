@@ -127,6 +127,11 @@ class ProfileScreen extends StatelessWidget {
                   title: 'Payment Methods',
                   onTap: () {},
                 ),
+                _MenuItem(
+                  icon: Icons.notifications_outlined,
+                  title: 'Notification Settings',
+                  onTap: () => context.push('/notification-settings'),
+                ),
                 const Divider(height: 0),
                 _MenuItem(
                   icon: Icons.headset_mic_outlined,
