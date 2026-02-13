@@ -68,7 +68,7 @@ class ImageSearchService {
     if (defaultTargetPlatform == TargetPlatform.android) {
       final status = await Permission.photos.request();
       if (status.isGranted) return true;
-      
+
       // Fallback to storage permission for older Android
       final storageStatus = await Permission.storage.request();
       return storageStatus.isGranted;
@@ -76,7 +76,7 @@ class ImageSearchService {
       final status = await Permission.photos.request();
       return status.isGranted;
     }
-    
+
     return true;
   }
 
@@ -88,8 +88,8 @@ class ImageSearchService {
   /// Check if gallery permission is granted
   Future<bool> isGalleryPermissionGranted() async {
     if (defaultTargetPlatform == TargetPlatform.android) {
-      return await Permission.photos.isGranted || 
-             await Permission.storage.isGranted;
+      return await Permission.photos.isGranted ||
+          await Permission.storage.isGranted;
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return await Permission.photos.isGranted;
     }

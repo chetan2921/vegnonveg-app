@@ -126,7 +126,10 @@ class _SearchScreenState extends State<SearchScreen> {
             child: GestureDetector(
               onTap: () => context.push('/image-search'),
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 16,
+                ),
                 decoration: BoxDecoration(
                   border: Border.all(color: AppColors.primaryBlack),
                   borderRadius: BorderRadius.circular(8),

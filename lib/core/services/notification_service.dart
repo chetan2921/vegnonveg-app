@@ -194,12 +194,18 @@ class NotificationService {
   /// Get notification preferences from storage
   Future<Map<String, bool>> getNotificationPreferences() async {
     return {
-      'restock_alerts': StorageService().getNotificationPreference('restock_alerts'),
+      'restock_alerts': StorageService().getNotificationPreference(
+        'restock_alerts',
+      ),
       'price_drops': StorageService().getNotificationPreference('price_drops'),
       'new_drops': StorageService().getNotificationPreference('new_drops'),
-      'order_updates': StorageService().getNotificationPreference('order_updates'),
+      'order_updates': StorageService().getNotificationPreference(
+        'order_updates',
+      ),
       'flash_sales': StorageService().getNotificationPreference('flash_sales'),
-      'recommendations': StorageService().getNotificationPreference('recommendations'),
+      'recommendations': StorageService().getNotificationPreference(
+        'recommendations',
+      ),
     };
   }
 

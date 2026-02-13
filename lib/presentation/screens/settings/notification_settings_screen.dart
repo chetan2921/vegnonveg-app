@@ -45,10 +45,7 @@ class _NotificationSettingsScreenState
       appBar: AppBar(
         title: Text(
           'Notification Settings',
-          style: GoogleFonts.inter(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          style: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
       body: _isLoading
@@ -162,10 +159,7 @@ class _NotificationSettingsScreenState
         ),
         title: Text(
           title,
-          style: GoogleFonts.inter(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-          ),
+          style: GoogleFonts.inter(fontSize: 15, fontWeight: FontWeight.w600),
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 4),

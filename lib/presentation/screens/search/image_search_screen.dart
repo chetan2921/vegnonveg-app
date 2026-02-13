@@ -42,11 +42,7 @@ class _ImageSearchScreenState extends State<ImageSearchScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.image_search,
-              size: 100,
-              color: AppColors.grey300,
-            ),
+            Icon(Icons.image_search, size: 100, color: AppColors.grey300),
             const SizedBox(height: 24),
             Text(
               'Search by Image',
@@ -154,7 +150,7 @@ class _ImageSearchScreenState extends State<ImageSearchScreen> {
             ],
           ),
         ),
-        
+
         // Search Button
         Padding(
           padding: const EdgeInsets.all(16),
@@ -194,18 +190,14 @@ class _ImageSearchScreenState extends State<ImageSearchScreen> {
         ),
 
         // Results
-        Expanded(
-          child: _buildResults(),
-        ),
+        Expanded(child: _buildResults()),
       ],
     );
   }
 
   Widget _buildResults() {
     if (_isSearching) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
+      return const Center(child: CircularProgressIndicator());
     }
 
     final productProvider = context.watch<ProductProvider>();
@@ -216,18 +208,11 @@ class _ImageSearchScreenState extends State<ImageSearchScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.search_off,
-              size: 64,
-              color: AppColors.grey300,
-            ),
+            Icon(Icons.search_off, size: 64, color: AppColors.grey300),
             const SizedBox(height: 16),
             Text(
               'No similar products found',
-              style: GoogleFonts.inter(
-                fontSize: 16,
-                color: AppColors.grey600,
-              ),
+              style: GoogleFonts.inter(fontSize: 16, color: AppColors.grey600),
             ),
           ],
         ),
@@ -302,10 +287,7 @@ class _ImageSearchScreenState extends State<ImageSearchScreen> {
         _isSearching = false;
       });
 
-      Helpers.showSnackBar(
-        context,
-        'Found $totalProducts similar products',
-      );
+      Helpers.showSnackBar(context, 'Found $totalProducts similar products');
     }
   }
 }

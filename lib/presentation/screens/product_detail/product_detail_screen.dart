@@ -776,7 +776,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               elevation: 0,
             ),
             child: Text(
-              !product.isAvailable ? 'SOLD OUT' : _addedToBag ? 'GO TO BAG' : 'ADD TO BAG',
+              !product.isAvailable
+                  ? 'SOLD OUT'
+                  : _addedToBag
+                  ? 'GO TO BAG'
+                  : 'ADD TO BAG',
               style: GoogleFonts.inter(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
@@ -791,7 +795,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   void _shareProduct(Product product) async {
-    final String shareText = '''
+    final String shareText =
+        '''
 Check out this ${product.brand} sneaker on VegNonVeg!
 
 ${product.name}
@@ -800,13 +805,11 @@ ${Formatters.currency(product.effectivePrice)}
 ${product.description}
 
 #VegNonVeg #Sneakers #${product.brand}
-'''.trim();
+'''
+            .trim();
 
     try {
-      await Share.share(
-        shareText,
-        subject: product.name,
-      );
+      await Share.share(shareText, subject: product.name);
     } catch (e) {
       if (mounted) {
         Helpers.showSnackBar(
